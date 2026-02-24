@@ -1,0 +1,16 @@
+<h1 class="mb-4 mt-4 text-center">My favorites</h1>
+  <div class="content">
+  <div class="container-xl">
+      <div class="products-container container-xxl">
+        <%= turbo_frame_tag :products, class: 'products row', src: products_path(favorites: true) do %>
+          <div class="alert alert-info text-center" role="alert">
+            Non hai favoriti nella lista!
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Frame for showing/editing products -->
+<%= turbo_frame_tag 'modal' do %>
+<% end %>

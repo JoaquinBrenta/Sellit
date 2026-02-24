@@ -1,0 +1,13 @@
+<div id="<%= dom_id category %>" class="mb-3">
+  <%= turbo_frame_tag "category_#{category.id}" do %>
+    <div class="p-3 border rounded bg-light">
+      <div class="d-flex gap-2 align-items-center justify-content-between">
+        <span class="badge bg-secondary" style="font-size: 1rem; padding: 0.5rem 0.75rem;"><%= category.name %></span>
+        <div class="d-flex gap-2">
+          <%= link_to t('.edit'), edit_category_path(category), class: "btn btn-sm btn-warning", data: { turbo_frame: "category_#{category.id}" } %>
+          <%= link_to t('.delete'), category_path(category), class: "btn btn-sm btn-danger", data: { turbo_method: :delete, turbo_confirm: t('common.confirm') } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

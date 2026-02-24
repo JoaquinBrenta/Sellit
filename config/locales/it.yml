@@ -1,0 +1,61 @@
+it:
+  activerecord:
+    models:
+      product: 'Prodotto'
+      user: 'Utente'
+    attributes:
+      product:
+        title: 'Titolo'
+        description: 'Descrizione'
+        price: 'Prezzo'
+        image: 'Immagine'
+        category: 'Categoria'
+      user:
+        username: 'Nome utente'
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Conferma password'
+    errors:
+      models:
+        product:
+          attributes:
+            title:
+              blank: "non può essere vuoto."
+            description:
+              blank: "non può essere vuota."
+            price:
+              blank: "non può essere vuoto."
+              not_a_number: "deve essere un numero."
+            category:
+              blank: "non può essere vuota."
+              required: "non può essere vuota."
+        user:
+          attributes:
+            username:
+              blank: "non può essere vuoto."
+              too_long: "è troppo lungo."
+              too_short: "è troppo corto."
+              invalid: "non è valido."
+              taken: "è già in uso."
+            email:
+              blank: "non può essere vuota."
+              invalid: "non è valida."
+              taken: "è già in uso."
+            password:
+              blank: "non può essere vuota."
+              too_short: "è troppo corta."
+  common:
+    confirm: 'Sei sicuro?'
+  products:
+    edit:
+      title: 'Modifica Prodotto'
+    index:
+      title: 'Prodotti'
+    new:
+      title: 'Crea un nuovo prodotto'
+    create:
+      created: 'Il prodotto è stato creato correttamente.'
+    update:
+      updated: 'Il prodotto è stato modificato correttamente.'
+    destroy:
+      destroyed: 'Il prodotto è stato eliminato correttamente.'

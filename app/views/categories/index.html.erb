@@ -1,0 +1,12 @@
+<h1 class="mb-4 mt-4 text-center">Categories</h1>
+
+<div style="max-width: 700px; margin: 0 auto; padding: 0 1rem 1rem 1rem;">
+  <div class="mb-2">
+    <%= link_to t('.new'), new_category_path, class: "btn btn-primary btn-md", data: { turbo_frame: "category_form" } %>
+  </div>
+
+  <%= turbo_frame_tag "category_form" do %>
+  <% end %>
+
+  <%= render partial: "category", collection: @categories %>
+</div>

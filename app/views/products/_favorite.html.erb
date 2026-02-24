@@ -1,0 +1,15 @@
+<div id="favorite">
+  <% unless product.favorite %>
+    <%= link_to favorites_path(product_id: product.id), data: { turbo_method: :post }, class: "text-danger d-inline-flex align-items-center gap-2", title: "Add to favorites" do %>
+      <i class="bi bi-heart" style="font-size: 1.5rem;"></i>
+      <span>Add to favorites</span>
+    <% end %>
+  <% end %>
+
+  <% if product.favorite %>
+    <%= link_to favorite_path(product.id), data: { turbo_method: :delete }, class: "text-danger d-inline-flex align-items-center gap-2", title: "Remove from favorites" do %>
+      <i class="bi bi-heart-fill" style="font-size: 1.5rem;"></i>
+      <span>Remove from favorites</span>
+    <% end %>
+  <% end %>
+</div>

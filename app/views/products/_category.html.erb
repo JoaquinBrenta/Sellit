@@ -1,0 +1,3 @@
+<%= link_to products_path(category_id: category.id), class: "categories col btn" + (params[:category_id].to_i == category.id ? ' btn-dark' : ' btn-light') do %>
+  <%= category.name %>
+<% end %>

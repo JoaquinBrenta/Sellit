@@ -1,0 +1,44 @@
+<%= turbo_frame_tag 'home' do %>
+  <div class="content">
+  <div class="container-xl">
+    <%= form_with url: products_path, method: :get do |form|%>
+      <%= form.text_field :search, placeholder: 'Search', onChange: 'this.form.requestSubmit()', value: params[:search], class: 'form-control mb-2 mt-2' %>
+      <div class="row g-0  mb-2">
+        <div class="col-4">
+          <%= form.number_field :min_price, placeholder: 'Min Price', onChange: 'this.form.requestSubmit()', value: params[:min_price], class: 'form-control' %>
+        </div>
+        <div class="col-4">
+          <%= form.number_field :max_price, placeholder: 'Max Price', onChange: 'this.form.requestSubmit()', value: params[:max_price], class: 'form-control' %>
+        </div>
+        <div class="col-4">
+          <%= form.select :order_by, options_for_select(Product::ORDER_BY.keys.map { |order| [order, order]}, params[:order_by]), {}, {onChange: 'this.form.requestSubmit()', class: 'form-select'} %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row g-0 mb-2 gap-2">
+    <%= link_to 'All', products_path, class: "categories col btn" + (params[:category_id].blank? ? ' btn-dark' : ' btn-light') %>
+    <%= render partial: 'category', collection: @categories %>
+    </div>
+     </div>
+    <div class="products-container container-xl">
+    <%= turbo_frame_tag 'products', class: 'products row' do %>
+      <% if @products.empty? %>
+        <div class="alert alert-info w-100 text-center" role="alert">
+          Non hai favoriti nella lista!
+        </div>
+      <% else %>
+        <%= render partial: 'product', collection: @products %>
+      <% end %>
+    <% end %>
+    </div>
+    <nav aria-label="Page navigation" class="nav-pagy d-flex mt-4 mb-4">
+      <ul class="pagination">
+        <%== @pagy.series_nav %>
+      </ul>
+    </nav>
+  </div>
+<% end %>
+
+<!-- Modal Frame for showing/editing products -->
+<%= turbo_frame_tag 'modal' do %>
+<% end %>

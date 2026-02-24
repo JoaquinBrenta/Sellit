@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+videogames:
+  name: Videogames
+
+computers:
+  name: Computers
+
+clothing:
+  name: Clothing
+
+cars:
+  name: cars
+
+music:
+  name: music
+
+electronic:
+  name: electronic
+
+books:
+  name: books
+
+mobile:
+  name: mobile
+
+sports:
+  name: sports

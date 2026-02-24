@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+<%= link_to products_path, class: "text-decoration-none" do %>
+<h1 class="navbar-brand">Sellit</h1>
+<% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+          <%= link_to 'Home', products_path, class: "nav-link" + (current_page?(products_path) ? ' active' : ''), 'aria-current': current_page?(products_path) ? 'page' : false if Current.user %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add Product', new_product_path, class: "nav-link" + (current_page?(new_product_path) ? ' active' : ''), 'aria-current': current_page?(new_product_path) ? 'page' : false, data: { turbo_frame: "modal" } if Current.user %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'My Favorites', favorites_path, class: "nav-link" + (current_page?(favorites_path) ? ' active' : ''), 'aria-current': current_page?(favorites_path) ? 'page' : false if Current.user %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Categories', categories_path, class: "nav-link" + (current_page?(categories_path) ? ' active' : ''), 'aria-current': current_page?(categories_path) ? 'page' : false if Current.user&.admin? %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Login', new_session_path, class: "nav-link" + (current_page?(new_session_path) ? ' active' : ''), 'aria-current': current_page?(new_session_path) ? 'page' : false unless Current.user %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Register', new_user_path, class: "nav-link" + (current_page?(new_user_path) ? ' active' : ''), 'aria-current': current_page?(new_user_path) ? 'page' : false unless Current.user %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', session_path(Current.user.id), class: "nav-link pb-0", data: {
+        turbo_method: :delete,
+        turbo_confirm: 'Are you sure you want to log out?'
+        }, 'aria-current': false if Current.user %>
+        </li>
+    </div>
+  </div>
+</nav>
+

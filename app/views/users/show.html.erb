@@ -1,0 +1,12 @@
+<h1 class="mb-4 mt-4 text-center">Products by: <%= @user.username %></h1>
+  <div class="content">
+  <div class="container-xl">
+    <div class="products-container container-xxl">
+    <%= turbo_frame_tag :products,  class: 'products row', src: products_path(user_id: @user.id) %>
+
+    </div>
+    </div>
+    </div>
+<!-- Modal Frame for showing/editing products -->
+<%= turbo_frame_tag 'modal' do %>
+<% end %>
