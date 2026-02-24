@@ -41,8 +41,9 @@ class ProductsController < ApplicationController
 
     def destroy
         authorize! product
+        product_id = product.id
         product.destroy
-        notify_all_users
+        ActionCable.server.broadcast("product_#{product_id}", { action: "destroy" })
         redirect_to products_path, notice: 'Product was successfully destroyed.'
     end
 
