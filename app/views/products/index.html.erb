@@ -22,20 +22,26 @@
      </div>
     <div class="products-container container-xl">
     <%= turbo_frame_tag 'products', class: 'products row' do %>
-      <% if @products.empty? %>
+      <% if @products.empty? && params[:favorites] %>
         <div class="alert alert-info w-100 text-center" role="alert">
           Non hai favoriti nella lista!
+        </div>
+      <% elsif @products.empty? %>
+        <div class="alert alert-info w-100 text-center" role="alert">
+          Nessun prodotto trovato.
         </div>
       <% else %>
         <%= render partial: 'product', collection: @products %>
       <% end %>
     <% end %>
     </div>
+    <% if @products.any? %>
     <nav aria-label="Page navigation" class="nav-pagy d-flex mt-4 mb-4">
       <ul class="pagination">
         <%== @pagy.series_nav %>
       </ul>
     </nav>
+    <% end %>
   </div>
 <% end %>
 
