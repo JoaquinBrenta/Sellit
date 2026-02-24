@@ -44,7 +44,7 @@ gem "image_processing", "~> 1.2"
 gem "pg_search", "~> 2.3"
 
 # Pagination with Pagy 
-gem "pagy", "~> 43.2"
+gem "pagy", "~> 43.3"
 
 #Bootstrap 5 
 gem 'bootstrap', '~> 5.3.8'
